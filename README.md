@@ -1,12 +1,16 @@
-# Nodejs Extensible & Queryable Repository
+# Nu-Q
 
-NEQ-R is a content repository API for nodejs.
+Nu-Q (prononce Nu Q as new Queries) is a content repository API for nodejs.
+
+NUQ is the airport code of Moffett Federal Airfield, next to the Hacker Dojo in bay area where this project was bootstrapped.
+
+NUQ stands also for Nu-Q Uses Queries, but this asserts false beacause Queries are not implemented in API.
 
 It describes objects and method to access data stored in a tree-based Repository.
 
 It's API is inspired from JCR.
 
-API definition is written with coffeescript, but can be implemented either with coffee or javascript.
+API is described with coffeescript, but can be implemented either with coffee or javascript.
 
 ## Existing implementation :
 
@@ -15,12 +19,15 @@ API definition is written with coffeescript, but can be implemented either with 
 
 ## Basic usage
 
+### Getting a Repository
+
+
 ## Implementing
 
 ### Using coffe
 
 ```
-api = require('NEQCore')
+api = require('NuQCore')
 class Node extends api.Node
     yourclassdefs
 ```
