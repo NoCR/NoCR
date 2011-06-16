@@ -1,4 +1,4 @@
-var core = require("./NEQCore.js"), a, MyNode
+var core = require("./NEQCore.js"), a, MyNode, MyRepository,
 __hasProp = Object.prototype.hasOwnProperty,
 __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
@@ -10,7 +10,7 @@ __extends = function(child, parent) {
   };
 
   
-  MyNode = (function() {
+/*  MyNode = (function() {
     __extends(MyNode,core.Node);
     function MyNode() {
       MyNode.__super__.constructor.apply(this, arguments);
@@ -19,10 +19,27 @@ __extends = function(child, parent) {
 	    console.log("Subclassing a coffee class in nodejs");
 	    };
     return MyNode;
-  })();
+  })(); */
 
+MyNode = __extends(MyNode,core.Node);
+  
+   function MyNode() {
+      
+    }
+MyNode.prototype.accept = function() {
+    console.log("Subclassing a coffee class in nodejs");
+    };
+
+MyRepository = __extends(MyRepository,core.Repository);
+   function MyRepository() {
+    }
+MyRepository.prototype.accept = function() {
+	
+    };
+  
   console.log(MyNode);
 
 a = new MyNode();	
 
 a.accept();
+a.getName();

@@ -1,109 +1,109 @@
 
+class RepositoryManager
+    @registry = {}
+    register: (id,repository) ->
+        @registry[id] = repository
+    
+    getRepository: (id) ->
+        @registry[id]
+        
+exports.manager = new RepositoryManager
 class NEQWorkspace
+    constructor: ->
+        throw new Error "NEQWorkspace must be implemented"
     getRepository: ->
-        throw new Error("NEQWorkspace must be implemented")
+exports.Workspace = NEQWorkspace
 
 # Session object provides access to repository nodes. It associates a Repository
 # and user Credentials
 class NEQSession
+    constructor: ->
+        throw new Error "NEQSession must be implemented"
     getUserID: ->
-        throw new Error("NEQSession must be implemented")
     
     getItem: (absPath) ->
-        throw new Error("NEQSession must be implemented")
     
     getRootNode: ->
-        throw new Error("NEQSession must be implemented")
     
     # gets a node instance giving the absolute path as parameter
     getNode: (absPath) ->
-        throw new Error("NEQSession must be implemented")
     
     # gets a node instance giving its unique identifier
     getNodeByIdentifier: (uuid) ->
-        throw new Error("NEQSession must be implemented")
     
     # gets the underlying repository instance
     getRepository: ->
-        throw new Error("NEQSession must be implemented")
     
     # Returns a new session 
     impersonate: (credentials) ->
-        throw new Error("NEQSession must be implemented")
 
+exports.session = NEQSession
 
 class NEQRepository
-    login: ->
-        throw new Error("NEQRepository must be implemented")
+    # returns a session object
+    constructor: ->
+        throw new Error "NEQRepository must be implemented"
     
+    login: (credentials) ->
+        
     getRoot: ->
-        throw new Error("NEQRepository must be implemented")
+        
 
-	
+exports.Repository = NEQRepository
+
 # Base type for node and Property 
 class NEQItem
-    # 
-    accept: (visitor) ->
-        throw new Error("NEQItem must be implemented")
+    constructor: ->
+        throw new Error "NEQItem must be implemented"
     
+    # accept a visit from a user
+    accept: (visitor) ->
+        
     getName: ->
-        throw new Error("NEQItem must be implemented")
     
     getParent: ->
-        throw new Error("NEQItem must be implemented")
     
     getPath: ->
-        throw new Error("NEQItem must be implemented")
     
     getDepth: ->
-        throw new Error("NEQItem must be implemented")
     
     getAncestror: (depth) ->
-        throw new Error("NEQItem must be implemented")
     
     getSession: ->
-        throw new Error("NEQItem must be implemented")
     
     isModified: ->
-        throw new Error("NEQItem must be implemented")
     
     isNew: ->
-        throw new Error("NEQItem must be implemented")
     
     isNode: ->
-        throw new Error("NEQItem must be implemented")
     
     isSame: (otherItem) ->
-        throw new Error("NEQItem must be implemented")
     
     refresh: (keepChanges) ->
-        throw new Error("NEQItem must be implemented")
     
     remove: ->
-        throw new Error("NEQItem must be implemented")
-    
+ 
+exports.Item = NEQItem 
 
 class NEQNode extends NEQItem
+    constructor: ->
+        throw new Error "NEQNode must be implemented"
     addNode: ->
-        throw new Error("NEQNode must be implemented")
     
     addMixin: ->
-        throw new Error("NEQNode must be implemented")
     
     getNodes: ->
-        throw new Error("NEQNode must be implemented")
     
     getProperties: ->
-        throw new Error("NEQNode must be implemented")
     
     getIdentifier: ->
-        throw new Error("NEQNode must be implemented")
     
     hasNode: ->
-        throw new Error("NEQNode must be implemented")
-	
-class NEQProperty extends NEQItem
-    getBinary: ->
-        throw new Error("NEQProperty must be implemented")
 
 exports.Node = NEQNode
+
+class NEQProperty extends NEQItem
+    constructor: ->
+        throw new Error "NEQProperty must be implemented"
+    getBinary: ->
+exports.Property = NEQProperty

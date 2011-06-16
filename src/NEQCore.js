@@ -1,5 +1,5 @@
 (function() {
-  var NEQItem, NEQNode, NEQProperty, NEQRepository, NEQSession, NEQWorkspace;
+  var NEQItem, NEQNode, NEQProperty, NEQRepository, NEQSession, NEQWorkspace, RepositoryManager;
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
     function ctor() { this.constructor = child; }
@@ -8,125 +8,90 @@
     child.__super__ = parent.prototype;
     return child;
   };
-  NEQWorkspace = (function() {
-    function NEQWorkspace() {}
-    NEQWorkspace.prototype.getRepository = function() {
-      throw new Error("NEQWorkspace must be implemented");
+  RepositoryManager = (function() {
+    function RepositoryManager() {}
+    RepositoryManager.registry = {};
+    RepositoryManager.prototype.register = function(id, repository) {
+      return this.registry[id] = repository;
     };
+    RepositoryManager.prototype.getRepository = function(id) {
+      return this.registry[id];
+    };
+    return RepositoryManager;
+  })();
+  exports.manager = new RepositoryManager;
+  NEQWorkspace = (function() {
+    function NEQWorkspace() {
+      throw new Error("NEQWorkspace must be implemented");
+    }
+    NEQWorkspace.prototype.getRepository = function() {};
     return NEQWorkspace;
   })();
+  exports.Workspace = NEQWorkspace;
   NEQSession = (function() {
-    function NEQSession() {}
-    NEQSession.prototype.getUserID = function() {
+    function NEQSession() {
       throw new Error("NEQSession must be implemented");
-    };
-    NEQSession.prototype.getItem = function(absPath) {
-      throw new Error("NEQSession must be implemented");
-    };
-    NEQSession.prototype.getRootNode = function() {
-      throw new Error("NEQSession must be implemented");
-    };
-    NEQSession.prototype.getNode = function(absPath) {
-      throw new Error("NEQSession must be implemented");
-    };
-    NEQSession.prototype.getNodeByIdentifier = function(uuid) {
-      throw new Error("NEQSession must be implemented");
-    };
-    NEQSession.prototype.getRepository = function() {
-      throw new Error("NEQSession must be implemented");
-    };
-    NEQSession.prototype.impersonate = function(credentials) {
-      throw new Error("NEQSession must be implemented");
-    };
+    }
+    NEQSession.prototype.getUserID = function() {};
+    NEQSession.prototype.getItem = function(absPath) {};
+    NEQSession.prototype.getRootNode = function() {};
+    NEQSession.prototype.getNode = function(absPath) {};
+    NEQSession.prototype.getNodeByIdentifier = function(uuid) {};
+    NEQSession.prototype.getRepository = function() {};
+    NEQSession.prototype.impersonate = function(credentials) {};
     return NEQSession;
   })();
+  exports.session = NEQSession;
   NEQRepository = (function() {
-    function NEQRepository() {}
-    NEQRepository.prototype.login = function() {
+    function NEQRepository() {
       throw new Error("NEQRepository must be implemented");
-    };
-    NEQRepository.prototype.getRoot = function() {
-      throw new Error("NEQRepository must be implemented");
-    };
+    }
+    NEQRepository.prototype.login = function(credentials) {};
+    NEQRepository.prototype.getRoot = function() {};
     return NEQRepository;
   })();
+  exports.Repository = NEQRepository;
   NEQItem = (function() {
-    function NEQItem() {}
-    NEQItem.prototype.accept = function(visitor) {
+    function NEQItem() {
       throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.getName = function() {
-      throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.getParent = function() {
-      throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.getPath = function() {
-      throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.getDepth = function() {
-      throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.getAncestror = function(depth) {
-      throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.getSession = function() {
-      throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.isModified = function() {
-      throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.isNew = function() {
-      throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.isNode = function() {
-      throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.isSame = function(otherItem) {
-      throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.refresh = function(keepChanges) {
-      throw new Error("NEQItem must be implemented");
-    };
-    NEQItem.prototype.remove = function() {
-      throw new Error("NEQItem must be implemented");
-    };
+    }
+    NEQItem.prototype.accept = function(visitor) {};
+    NEQItem.prototype.getName = function() {};
+    NEQItem.prototype.getParent = function() {};
+    NEQItem.prototype.getPath = function() {};
+    NEQItem.prototype.getDepth = function() {};
+    NEQItem.prototype.getAncestror = function(depth) {};
+    NEQItem.prototype.getSession = function() {};
+    NEQItem.prototype.isModified = function() {};
+    NEQItem.prototype.isNew = function() {};
+    NEQItem.prototype.isNode = function() {};
+    NEQItem.prototype.isSame = function(otherItem) {};
+    NEQItem.prototype.refresh = function(keepChanges) {};
+    NEQItem.prototype.remove = function() {};
     return NEQItem;
   })();
+  exports.Item = NEQItem;
   NEQNode = (function() {
     __extends(NEQNode, NEQItem);
     function NEQNode() {
-      NEQNode.__super__.constructor.apply(this, arguments);
+      throw new Error("NEQNode must be implemented");
     }
-    NEQNode.prototype.addNode = function() {
-      throw new Error("NEQNode must be implemented");
-    };
-    NEQNode.prototype.addMixin = function() {
-      throw new Error("NEQNode must be implemented");
-    };
-    NEQNode.prototype.getNodes = function() {
-      throw new Error("NEQNode must be implemented");
-    };
-    NEQNode.prototype.getProperties = function() {
-      throw new Error("NEQNode must be implemented");
-    };
-    NEQNode.prototype.getIdentifier = function() {
-      throw new Error("NEQNode must be implemented");
-    };
-    NEQNode.prototype.hasNode = function() {
-      throw new Error("NEQNode must be implemented");
-    };
+    NEQNode.prototype.addNode = function() {};
+    NEQNode.prototype.addMixin = function() {};
+    NEQNode.prototype.getNodes = function() {};
+    NEQNode.prototype.getProperties = function() {};
+    NEQNode.prototype.getIdentifier = function() {};
+    NEQNode.prototype.hasNode = function() {};
     return NEQNode;
   })();
+  exports.Node = NEQNode;
   NEQProperty = (function() {
     __extends(NEQProperty, NEQItem);
     function NEQProperty() {
-      NEQProperty.__super__.constructor.apply(this, arguments);
-    }
-    NEQProperty.prototype.getBinary = function() {
       throw new Error("NEQProperty must be implemented");
-    };
+    }
+    NEQProperty.prototype.getBinary = function() {};
     return NEQProperty;
   })();
-  exports.Node = NEQNode;
+  exports.Property = NEQProperty;
 }).call(this);
