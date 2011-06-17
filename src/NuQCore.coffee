@@ -50,6 +50,9 @@ class NuQSession
     # gets the underlying repository instance
     getRepository: ->
         throw new Error "method not implemented"
+    # Check if action is allowed on node requested by abspath
+    checkPermission: (abspath, action) ->
+        throw new Error "method not implemented"
     # Returns a new session 
     impersonate: (credentials) ->
         throw new Error "method not implemented"

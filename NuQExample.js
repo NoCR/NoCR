@@ -14,7 +14,8 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Nu-Q.  If not, see <http://www.gnu.org/licenses/>.
  */
-var core = require("./src/NuQCore.js"), a,
+var core = require("./src/NuQCore.js"),
+	_ = require('util'), a,
 	/**
 	 * Subclass implementation
 	 */
@@ -37,12 +38,9 @@ var core = require("./src/NuQCore.js"), a,
 	    //MyNode.super_.constructor.apply(this, arguments);
 	    
 	},
-	MyRepository,
-	_ = require('util');
+	MyRepository;
 
-console.log(_);
 _.inherits(MyNode,core.Node);
-  console.log(MyNode);
 
 a = new MyNode();	
 console.log(a);

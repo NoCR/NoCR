@@ -1,5 +1,20 @@
 (function() {
-  var NuQItem, NuQNode, NuQProperty, NuQRepository, NuQSession, NuQWorkspace, RepositoryManager;
+  /*
+   * This file is part of Nu-Q.
+   *
+   * Nu-Q is free software: you can redistribute it and/or modify
+   * it under the terms of the GNU Lesser General Public License as published by
+   * the Free Software Foundation, either version 3 of the License, or
+   * any later version.
+   *
+   * Nu-Q is distributed in the hope that it will be useful,
+   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   * GNU Lesser General Public License for more details.
+   *
+   * You should have received a copy of the GNU Lesser General Public License
+   * along with Nu-Q.  If not, see <http://www.gnu.org/licenses/>.
+  */  var NuQItem, NuQNode, NuQProperty, NuQRepository, NuQSession, NuQWorkspace, RepositoryManager;
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
     function ctor() { this.constructor = child; }
@@ -50,6 +65,9 @@
       throw new Error("method not implemented");
     };
     NuQSession.prototype.getRepository = function() {
+      throw new Error("method not implemented");
+    };
+    NuQSession.prototype.checkPermission = function(abspath, action) {
       throw new Error("method not implemented");
     };
     NuQSession.prototype.impersonate = function(credentials) {
