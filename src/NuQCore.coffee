@@ -13,6 +13,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with Nu-Q.  If not, see <http://www.gnu.org/licenses/>.
+
+
 ###
 class RepositoryManager
     @registry = {}
@@ -64,9 +66,12 @@ class NuQRepository
         throw new Error "NuQRepository must be implemented"
     
     login: (credentials) ->
-            throw new Error "method not implemented"
+        throw new Error "method not implemented"
     getRoot: ->
-            throw new Error "method not implemented"
+        throw new Error "method not implemented"
+    # Ends repository's lifecycle (release resources, finish all sessions)
+    close: ->
+        throw new Error "method not implemented"
 
 exports.Repository = NuQRepository
 

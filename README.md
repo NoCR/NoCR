@@ -15,7 +15,7 @@ API is described with coffeescript, but can be implemented either with coffee or
 ## Existing implementation :
 
 * karacos-cr-redis - Content Repository with persistence in a Redis key/value store
-* karacos-cr-mongo - Same as above, but using MongoDB Document Database
+* [karacos-nuq-mongo](https://github.com/karacos/karacos-nuq-mongodb) - Same as above, but using MongoDB Document Database
 
 ## Basic usage
 
