@@ -17,29 +17,40 @@
 var vows = require('vows'),
     assert = require('assert'),
     core = require("../src/NuQCore.js"),
-    _ = require('util');
+    _ = require('util'),
+    repositoryInstance;
 
-function getSuite(repository) {
-	return {
-		'Testing a custom implementation of Node': {
-	        topic: undefined, // topic should be set in custom implementation test suite 
-	        'instanceof NuQRepository': function(topic) {
+function getSuite() {
+	var suite = {};
+	suite['Testing a custom instance of Repository'] = {
+        topic: function(){
+        	getRepositoryInstance(this.callback);
+        	}, 
+        'instanceof NuQRepository': function(err,topic) {
 //	        	console.log(topic);
-	        	assert.ok((topic instanceof core.Repository),'topic is not instanceOf NuQRepository');
-	        }
-		}
+        	assert.ok((topic instanceof core.Repository),'topic is not instanceOf NuQRepository');
+        }
 	};
+	return suite;
 };
+function setRepositoryInstance(repository) {
+	repositoryInstance = repository;
+}
 
+//repositoryInstance must be set in custom implementation test suite
+function getRepositoryInstance(callback, err) {
+	callback(err, repositoryInstance);
+}
+exports.setRepositoryInstance = setRepositoryInstance;
 function implSuite(instance) {
 	var context = {
-	        topic: instance,
-	        'instanceof NuQRepository': function(instance) {
+	        topic: context.instance,
+	        'instanceof NuQRepository': function(topic) {
 //	        	console.log(instance);
-	        	assert.ok((instance instanceof core.Repository),'topic is not instanceOf NuQRepository');
+	        	assert.ok((topic instanceof core.Repository),'topic is not instanceOf NuQRepository');
 	        }
 	    };
-
+		context.instance = instance;
 	    return context;
 }
 exports.implSuite = implSuite;
