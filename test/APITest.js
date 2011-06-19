@@ -42,7 +42,6 @@ MyNode = function() {
     
 };
 _.inherits(MyNode,core.Node);
-_ = require('util');
 
 exports.suite1 = vows.describe('Nu-Q core API validation').addBatch({
 	'Testing a custom implementation of Node': {

@@ -75,7 +75,7 @@
     };
     return NuQSession;
   })();
-  exports.session = NuQSession;
+  exports.Session = NuQSession;
   NuQRepository = (function() {
     function NuQRepository() {
       throw new Error("NuQRepository must be implemented");

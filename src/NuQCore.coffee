@@ -58,7 +58,7 @@ class NuQSession
     # Returns a new session 
     impersonate: (credentials) ->
         throw new Error "method not implemented"
-exports.session = NuQSession
+exports.Session = NuQSession
 
 class NuQRepository
     # returns a session object
