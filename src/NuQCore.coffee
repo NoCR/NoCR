@@ -64,10 +64,7 @@ class NuQRepository
     # returns a session object
     constructor: ->
         throw new Error "NuQRepository must be implemented"
-    
     login: (credentials, repositoryName, callback) ->
-        throw new Error "method not implemented"
-    getRoot: (callback) ->
         throw new Error "method not implemented"
     # Ends repository's lifecycle (release resources, finish all sessions)
     close: ->
