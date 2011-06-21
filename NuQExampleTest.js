@@ -30,6 +30,6 @@ repositorySuite.addBatch({
 	}
 });
 
-// gets the API test suite and add it AFTER nuqtests.setRepositoryInstance
+// gets the API test suite and add it AFTER a batch where nuqtests.setRepositoryInstance is called
 repositorySuite.addBatch(nuqtests.getSuite());
 exports.repositorySuite = repositorySuite;

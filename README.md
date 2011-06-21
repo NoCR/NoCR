@@ -8,16 +8,20 @@ NUQ stands also for Nu-Q Uses Queries, but this asserts false beacause Queries a
 
 It describes objects and method to access data stored in a tree-based Repository.
 
-It's API is inspired from JCR.
+It brings a [vows](http://vowsjs.org/) testSuite for implementations.
+
+It's API is inspired from JCR, and extended for asynchronous model.
 
 API is described with coffeescript, but can be implemented either with coffee or javascript.
 
 ## Existing implementation :
 
 * karacos-cr-redis - Content Repository with persistence in a Redis key/value store
-* [karacos-nuq-mongo](https://github.com/karacos/karacos-nuq-mongodb) - Same as above, but using MongoDB Document Database
+* [karacos-nuq-mongodb](https://github.com/karacos/karacos-nuq-mongodb) - Same as above, but using MongoDB Document Database
 
 ## Basic usage
+
+see example files in toplevel dir
 
 ### Getting a Repository
 

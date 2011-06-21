@@ -21,37 +21,40 @@ var vows = require('vows'),
     repositoryInstance;
 
 function getSuite() {
-	var suite = {};
-	suite['Testing a custom instance of Repository'] = {
-        topic: function(){
-        	getRepositoryInstance(this.callback);
-        	}, 
-        'instanceof NuQRepository': function(err,topic) {
-//	        	console.log(topic);
-        	assert.ok((topic instanceof core.Repository),'topic is not instanceOf NuQRepository');
-        }
+	return suite = {
+		'[Nu-Q] Testing a custom instance of Repository':{
+	        topic: function(){
+	        	getRepositoryAsync(this.callback);
+	        	}, 
+	        'instanceof NuQRepository': function(err,repo) {
+//			        	console.log(topic);
+	        	assert.ok((repo instanceof core.Repository),'result is not instanceOf NuQRepository');
+	        }
+		},
+		'[Nu-Q] Testing anonymous login': {
+			topic: function(){
+				getRepository().login(null, "testWorkSpace",this.callback);
+			},
+			'Test Session object' : function(err,session){
+				assert.ok((session instanceof core.Session),'Session is not a session object');
+			}
+		}
 	};
-	return suite;
 };
+
+function getRepository() {
+	return repositoryInstance;
+}
+
 function setRepositoryInstance(repository) {
 	repositoryInstance = repository;
 }
 
 //repositoryInstance must be set in custom implementation test suite
-function getRepositoryInstance(callback, err) {
+function getRepositoryAsync(callback, err) {
 	callback(err, repositoryInstance);
 }
+
 exports.setRepositoryInstance = setRepositoryInstance;
-function implSuite(instance) {
-	var context = {
-	        topic: context.instance,
-	        'instanceof NuQRepository': function(topic) {
-//	        	console.log(instance);
-	        	assert.ok((topic instanceof core.Repository),'topic is not instanceOf NuQRepository');
-	        }
-	    };
-		context.instance = instance;
-	    return context;
-}
-exports.implSuite = implSuite;
+exports.getRepository = getRepository;
 exports.getSuite = getSuite;
