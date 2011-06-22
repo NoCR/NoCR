@@ -122,6 +122,8 @@ class NuQNode extends NuQItem
         throw new Error "method not implemented"
     hasNode: ->
         throw new Error "method not implemented"
+    getNode: (callback) ->
+        throw new Error "method not implemented"
 exports.Node = NuQNode
 
 class NuQProperty extends NuQItem

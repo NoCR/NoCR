@@ -1,18 +1,25 @@
 (function() {
-  var assert, core, getNode, getNodeAsync, getSuite, nodeInstance, setNode, vows, _;
+  var assert, core, getNodeAsync, getSession, getSuite, getTestedNode, nodeInstance, sessionInstance, setNode, setSession, vows, _;
   vows = require("vows");
   assert = require("assert");
   core = require("../src/NuQCore.js");
   _ = require("util");
   nodeInstance = null;
-  getNode = function() {
-    return repositoryInstance;
+  getTestedNode = function() {
+    return nodeInstance;
   };
   setNode = function(node) {
     return nodeInstance = node;
   };
   getNodeAsync = function(callback, err) {
     return callback(err, nodeInstance);
+  };
+  sessionInstance = null;
+  getSession = function() {
+    return sessionInstance;
+  };
+  setSession = function(session) {
+    return sessionInstance = session;
   };
   getSuite = function() {
     var suite;
@@ -30,10 +37,19 @@
         "GetPath returns String": function(err, node) {
           return assert.ok(typeof node.getPath() === 'string', "GetPath return type is not string");
         }
+      },
+      "getNode node.getPath == node": {
+        topic: function() {
+          return getSession().getNode(getTestedNode().getPath(), this.callback);
+        },
+        "Compare objects": function(err, node) {
+          return assert.ok(getTestedNode() === node, "equality should be verified");
+        }
       }
     };
   };
-  exports.getNode = getNode;
+  exports.getTestedNode = getTestedNode;
   exports.getSuite = getSuite;
   exports.setNode = setNode;
+  exports.setSession = setSession;
 }).call(this);

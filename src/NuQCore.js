@@ -14,6 +14,8 @@
    *
    * You should have received a copy of the GNU Lesser General Public License
    * along with Nu-Q.  If not, see <http://www.gnu.org/licenses/>.
+  
+  
   */  var NuQItem, NuQNode, NuQProperty, NuQRepository, NuQSession, NuQWorkspace, RepositoryManager;
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
@@ -80,10 +82,10 @@
     function NuQRepository() {
       throw new Error("NuQRepository must be implemented");
     }
-    NuQRepository.prototype.login = function(credentials) {
+    NuQRepository.prototype.login = function(credentials, repositoryName, callback) {
       throw new Error("method not implemented");
     };
-    NuQRepository.prototype.getRoot = function() {
+    NuQRepository.prototype.close = function() {
       throw new Error("method not implemented");
     };
     return NuQRepository;
@@ -156,6 +158,9 @@
       throw new Error("method not implemented");
     };
     NuQNode.prototype.hasNode = function() {
+      throw new Error("method not implemented");
+    };
+    NuQNode.prototype.getNode = function(callback) {
       throw new Error("method not implemented");
     };
     return NuQNode;
