@@ -58,6 +58,10 @@ class NuQSession
     # Returns a new session 
     impersonate: (credentials) ->
         throw new Error "method not implemented"
+    itemExists: (abspath, callback) ->
+        throw new Error "method not implemented"
+    nodeExists: (abspath, callback) ->
+        throw new Error "method not implemented"
 exports.Session = NuQSession
 
 class NuQRepository

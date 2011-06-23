@@ -75,6 +75,12 @@
     NuQSession.prototype.impersonate = function(credentials) {
       throw new Error("method not implemented");
     };
+    NuQSession.prototype.itemExists = function(abspath, callback) {
+      throw new Error("method not implemented");
+    };
+    NuQSession.prototype.nodeExists = function(abspath, callback) {
+      throw new Error("method not implemented");
+    };
     return NuQSession;
   })();
   exports.Session = NuQSession;
