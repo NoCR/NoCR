@@ -30,6 +30,8 @@ class NuQWorkspace
         throw new Error "NuQWorkspace must be implemented"
     getRepository: ->
         throw new Error "method not implemented"
+    getSession: ->
+        throw new Error "method not implemented"
 exports.Workspace = NuQWorkspace
 
 # Session object provides access to repository nodes. It associates a Repository

@@ -51,48 +51,6 @@
           assert.ok(node instanceof core.Item, "Node is not instance of NuQItem");
           return assert.ok(getTestedNode() === node, "equality must be verified");
         }
-      },
-      "Direct Access tests (cf jcr-spec.pdf p88, v2)": {
-        topic: function() {
-          return getSessionAsync(this.callback);
-        },
-        "S.getItem(p(N)) returns N.": function(err, S) {
-          return S.getItem(getTestedNode().getPath(), function(err, N) {
-            return assert.ok(N === getTestedNode(), "equality must be verified");
-          });
-        },
-        "S.itemExists(p(N)) returns true": function(err, S) {
-          return S.itemExists(getTestedNode().getPath(), function(err, res) {
-            return assert.ok(res);
-          });
-        },
-        "S.getNode(p(N)) returns N.": function(err, S) {
-          return S.getNode(getTestedNode().getPath(), function(err, N) {
-            return assert.ok(N === getTestedNode(), "equality must be verified");
-          });
-        },
-        "S.nodeExists(p(N)) returns true": function(err, S) {
-          return S.nodeExists(getTestedNode().getPath(), function(err, res) {
-            return assert.ok(res);
-          });
-        },
-        "S.getNodeByIdentifier(id(N)) returns N": function(err, S) {
-          return S.getNodeByIdentifier(getTestedNode().getIdentifier(), function(err, N) {
-            return assert.ok(N === getTestedNode(), "equality must be verified");
-          });
-        },
-        "If N is the primary item of a node M then M.getPrimaryItem() returns N": function(err, S) {
-          return assert.ok(false, "Test not implemented");
-        },
-        "If N is the root node of the workspace then S.getRootNode() returns N": function(err, S) {
-          return assert.ok(false, "Test not implemented");
-        },
-        "For all nodes M to which S has direct access, M.getNode(p(M,N)) returns N": function(err, S) {
-          return assert.ok(false, "Test not implemented");
-        },
-        "For all nodes M to which S has direct access, M.hasNode(p(M,N)) returns true": function(err, S) {
-          return assert.ok(false, "Test not implemented");
-        }
       }
     };
   };
