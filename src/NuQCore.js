@@ -16,7 +16,7 @@
    * along with Nu-Q.  If not, see <http://www.gnu.org/licenses/>.
   
   
-  */  var NuQItem, NuQNode, NuQProperty, NuQRepository, NuQSession, NuQWorkspace, RepositoryManager;
+  */  var NuQItem, NuQNode, NuQNodeType, NuQProperty, NuQRepository, NuQSession, NuQValue, NuQWorkspace, RepositoryManager;
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
     function ctor() { this.constructor = child; }
@@ -42,6 +42,12 @@
       throw new Error("NuQWorkspace must be implemented");
     }
     NuQWorkspace.prototype.getRepository = function() {
+      throw new Error("method not implemented");
+    };
+    NuQWorkspace.prototype.getSession = function() {
+      throw new Error("method not implemented");
+    };
+    NuQWorkspace.prototype.getNodeTypeManager = function() {
       throw new Error("method not implemented");
     };
     return NuQWorkspace;
@@ -84,6 +90,116 @@
     return NuQSession;
   })();
   exports.Session = NuQSession;
+  NuQNodeType = (function() {
+    function NuQNodeType() {
+      throw new Error("NuQNodeType must be implemented");
+    }
+    /*
+         Returns true if this node type allows the addition of a child node called childNodeName
+         of node type nodeTypeName.
+         If it's called without specific node type information (nodeTypeName is not specified - undefined)
+         (that is, given the definition of this parent node type, the child node name is sufficient
+         to determine the intended child node type).
+        */
+    NuQNodeType.prototype.canAddChildNode = function(nodeName, nodeTypeName) {
+      throw new Error("NuQNodeType must be implemented");
+    };
+    /*
+         Returns true if removing the child node called nodeName is allowed by this node type.
+        */
+    NuQNodeType.prototype.canRemoveNode = function(nodeName) {
+      throw new Error("NuQNodeType must be implemented");
+    };
+    /*
+         Returns true if removing the property called propertyName is allowed by this node type.
+        */
+    NuQNodeType.prototype.canRemoveProperty = function(propertyName) {
+      throw new Error("NuQNodeType must be implemented");
+    };
+    /*
+         Returns true if setting propertyName to value is allowed by this node type.
+         value parameter can either be a single value as an array of values
+        */
+    NuQNodeType.prototype.canSetProperty = function(propertyName, value) {
+      throw new Error("NuQNodeType must be implemented");
+    };
+    /*
+         Returns an array containing the child node definitions of this node type.
+        */
+    NuQNodeType.prototype.getChildNodeDefinitions = function() {
+      throw new Error("NuQNodeType must be implemented");
+    };
+    /*
+         Returns the direct subtypes of this node type in the node type inheritance hierarchy
+         that is, those which actually declared this node type in their list of supertypes.
+        */
+    NuQNodeType.prototype.getDeclaredSubtypes = function() {
+      throw new Error("NuQNodeType must be implemented");
+    };
+    /*
+         Returns the direct supertypes of this node type in the
+         node type inheritance hierarchy, that is, those actually declared in this node type.
+        */
+    NuQNodeType.prototype.getDeclaredSupertypes = function() {
+      throw new Error("NuQNodeType must be implemented");
+    };
+    /*
+         Returns an array containing the property definitions of this node type.
+        */
+    NuQNodeType.prototype.getPropertyDefinitions = function() {
+      throw new Error("NuQNodeType must be implemented");
+    };
+    /*
+         Returns all subtypes of this node type in the node type inheritance hierarchy.
+        */
+    NuQNodeType.prototype.getSubtypes = function() {
+      throw new Error("NuQNodeType must be implemented");
+    };
+    /*
+         Returns all supertypes of this node type in the node type inheritance hierarchy.
+        */
+    NuQNodeType.prototype.getSupertypes = function() {
+      throw new Error("NuQNodeType must be implemented");
+    };
+    /*
+         Returns true if the name of this node type or any of its direct or indirect supertypes is equal to nodeTypeName, otherwise returns false.
+        */
+    NuQNodeType.prototype.isNodeType = function(nodeTypeName) {
+      throw new Error("NuQNodeType must be implemented");
+    };
+    return NuQNodeType;
+  })();
+  exports.NodeType = NuQNodeType;
+  NuQValue = (function() {
+    function NuQValue() {
+      throw new Error("NuQValue must be implemented");
+    }
+    NuQValue.prototype.getBinary = function() {
+      throw new Error("NuQValue must be implemented");
+    };
+    NuQValue.prototype.getBoolean = function() {
+      throw new Error("NuQValue must be implemented");
+    };
+    NuQValue.prototype.getDate = function() {
+      throw new Error("NuQValue must be implemented");
+    };
+    NuQValue.prototype.getDecimal = function() {
+      throw new Error("NuQValue must be implemented");
+    };
+    NuQValue.prototype.getDouble = function() {
+      throw new Error("NuQValue must be implemented");
+    };
+    NuQValue.prototype.getLong = function() {
+      throw new Error("NuQValue must be implemented");
+    };
+    NuQValue.prototype.getString = function() {
+      throw new Error("NuQValue must be implemented");
+    };
+    NuQValue.prototype.getType = function() {
+      throw new Error("NuQValue must be implemented");
+    };
+    return NuQValue;
+  })();
   NuQRepository = (function() {
     function NuQRepository() {
       throw new Error("NuQRepository must be implemented");

@@ -32,6 +32,8 @@ class NuQWorkspace
         throw new Error "method not implemented"
     getSession: ->
         throw new Error "method not implemented"
+    getNodeTypeManager: ->
+        throw new Error "method not implemented"
 exports.Workspace = NuQWorkspace
 
 # Session object provides access to repository nodes. It associates a Repository
@@ -65,6 +67,106 @@ class NuQSession
     nodeExists: (abspath, callback) ->
         throw new Error "method not implemented"
 exports.Session = NuQSession
+
+class NuQNodeType
+    constructor: ->
+        throw new Error "NuQNodeType must be implemented"
+    ###
+     Returns true if this node type allows the addition of a child node called childNodeName
+     of node type nodeTypeName.
+     If it's called without specific node type information (nodeTypeName is not specified - undefined)
+     (that is, given the definition of this parent node type, the child node name is sufficient
+     to determine the intended child node type).
+    ###
+    canAddChildNode: (nodeName, nodeTypeName) ->
+        throw new Error "NuQNodeType must be implemented"
+    
+    ###
+     Returns true if removing the child node called nodeName is allowed by this node type.
+    ###
+    canRemoveNode: (nodeName) ->
+        throw new Error "NuQNodeType must be implemented"
+    
+    ###
+     Returns true if removing the property called propertyName is allowed by this node type.
+    ###
+    canRemoveProperty: (propertyName) ->
+        throw new Error "NuQNodeType must be implemented"
+    
+    ###
+     Returns true if setting propertyName to value is allowed by this node type.
+     value parameter can either be a single value as an array of values
+    ###
+    canSetProperty: (propertyName, value) ->
+        throw new Error "NuQNodeType must be implemented"
+    
+    ###
+     Returns an array containing the child node definitions of this node type.
+    ###
+    getChildNodeDefinitions: ->
+        throw new Error "NuQNodeType must be implemented"
+    
+    ###
+     Returns the direct subtypes of this node type in the node type inheritance hierarchy
+     that is, those which actually declared this node type in their list of supertypes.
+    ###
+    getDeclaredSubtypes: ->
+        throw new Error "NuQNodeType must be implemented"
+    
+    ###
+     Returns the direct supertypes of this node type in the
+     node type inheritance hierarchy, that is, those actually declared in this node type.
+    ###
+    getDeclaredSupertypes: ->
+        throw new Error "NuQNodeType must be implemented"
+    
+    ###
+     Returns an array containing the property definitions of this node type.
+    ###
+    getPropertyDefinitions: ->
+        throw new Error "NuQNodeType must be implemented"
+    
+    ###
+     Returns all subtypes of this node type in the node type inheritance hierarchy.
+    ###
+    getSubtypes: ->
+        throw new Error "NuQNodeType must be implemented"
+    
+    ###
+     Returns all supertypes of this node type in the node type inheritance hierarchy.
+    ###
+    getSupertypes: ->
+        throw new Error "NuQNodeType must be implemented"
+    
+    ###
+     Returns true if the name of this node type or any of its direct or indirect supertypes is equal to nodeTypeName, otherwise returns false.
+    ###
+    isNodeType: (nodeTypeName)->
+        throw new Error "NuQNodeType must be implemented"
+
+exports.NodeType = NuQNodeType
+
+class NuQValue
+    constructor: ->
+        throw new Error "NuQValue must be implemented"
+    getBinary: ->
+        throw new Error "NuQValue must be implemented"
+    getBoolean: ->
+        throw new Error "NuQValue must be implemented"
+    getDate: ->
+        throw new Error "NuQValue must be implemented"
+    getDecimal: ->
+        throw new Error "NuQValue must be implemented"
+    getDouble: ->
+        throw new Error "NuQValue must be implemented"
+    getLong: ->
+        throw new Error "NuQValue must be implemented"
+    getString: ->
+        throw new Error "NuQValue must be implemented"
+    getType: ->
+        throw new Error "NuQValue must be implemented"
+
+exports.value = NuQValue
 
 class NuQRepository
     # returns a session object
