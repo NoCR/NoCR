@@ -18,9 +18,11 @@
   getSession = function() {
     return sessionInstance;
   };
+  exports.getSession = getSession;
   getSessionAsync = function(callback, err) {
     return callback(err, sessionInstance);
   };
+  exports.getSessionAsync = getSessionAsync;
   setSession = function(session) {
     return sessionInstance = session;
   };

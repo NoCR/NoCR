@@ -46,7 +46,7 @@ function getRepository() {
 	return repositoryInstance;
 }
 
-function setRepositoryInstance(repository) {
+function setRepository(repository) {
 	repositoryInstance = repository;
 }
 
@@ -55,6 +55,6 @@ function getRepositoryAsync(callback, err) {
 	callback(err, repositoryInstance);
 }
 
-exports.setRepositoryInstance = setRepositoryInstance;
+exports.setRepository = setRepository;
 exports.getRepository = getRepository;
 exports.getSuite = getSuite;

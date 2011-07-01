@@ -19,9 +19,11 @@ sessionInstance = null
 
 getSession = () ->
     sessionInstance
+exports.getSession = getSession
 
 getSessionAsync = (callback, err) ->
     callback err,sessionInstance
+exports.getSessionAsync = getSessionAsync
 
 setSession = (session) ->
     sessionInstance = session
