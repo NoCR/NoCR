@@ -44,9 +44,9 @@ npm install vows
 ```
 Interface is described in module ImplTest, in order to work, you should invoque first :
 
-ImplTest.setRepository
-ImplTest.setSession
-ImplTest.setNode
+ * ImplTest.setRepository
+ * ImplTest.setSession
+ * ImplTest.setNode
 
 then, on a described vows testSuite, invoke : `ImplTest.addNoCRBatch(testSuite);`
 
