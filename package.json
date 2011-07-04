@@ -1,0 +1,55 @@
+{
+    "name": "NoCR",
+    "version": "0.0.1",
+    "description": "NoCR (like JCR) is content repository API, unlike JCR it's written in CoffeeScript+Node.js instead of Java, and also allows to implement a content repository in javascript or coffee. It helps you to write a good implementation as it provides a full featured test suite.",
+    "homepage": "https://github.com/NoCR/NoCR",
+    "keywords": [
+        "javascript",
+        "dms",
+        "documents",
+        "generator",
+        "website",
+        "cms"
+    ],
+    "author": {
+        "name": "Nicolas Karageuzian",
+        "email": "nka@nka.me",
+        "web": "http://nka.me"
+    },
+    "maintainers": [
+        {
+            "name": "Nicolas Karageuzian",
+            "email": "nka@nka.me",
+            "web": "http://nka.me"
+        }
+    ],
+    "contributors": [
+        {
+            "name": "Nicolas Karageuzian",
+            "email": "nka@nka.me",
+            "web": "http://nka.me"
+        }
+    ],
+    "bugs": {
+        "web": "https://github.com/NoCR/NoCR/issues"
+    },
+    "licenses": [
+        {
+            "type": "LGPL",
+            "url": "http://www.gnu.org/licenses/lgpl.html"
+        }
+    ],
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/NoCR/NoCR.git"
+    },
+    "dependencies": {
+    },
+    "engines" : {
+        "node": ">=0.4.0"
+    },
+    "directories": {
+        "lib": "lib"
+    },
+    "main": "./lib/NoCR.js"
+}

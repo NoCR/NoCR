@@ -1,6 +1,6 @@
 vows = require "vows"
 assert = require "assert"
-core = require "../src/NuQCore.js"
+core = require "../NoCR.js"
 _ = require "util"
 
 

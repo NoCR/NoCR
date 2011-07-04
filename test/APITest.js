@@ -16,7 +16,7 @@
  */
 var vows = require('vows'),
     assert = require('assert'),
-    core = require("../src/NuQCore.js"),
+    core = require("../src/NoCR.js"),
     _ = require('util'),
     a, MyRepository,
 /**
