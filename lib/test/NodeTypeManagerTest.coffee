@@ -1,6 +1,6 @@
 vows = require "vows"
 assert = require "assert"
-core = require "../NoCR.js"
+nocr = require "../NoCR.js"
 _ = require "util"
 
 sessionInstance = null
@@ -24,11 +24,11 @@ getSuite = ->
                 assert.ok typeof nodeTypeManager.getNodeType != 'undefined' ,"getNodeType method not found"
             "Check for type 'nt:base'": (err, nodeTypeManager) ->
                 type = nodeTypeManager.getNodeType 'nt:base'
-                assert.ok type instanceof core.NodeType, "nodeTypeManager.getNodeType('nt:base') doesn't returns a valid type object"
+                assert.ok type instanceof nocr.nodetype.NodeType, "nodeTypeManager.getNodeType('nt:base') doesn't returns a valid type object"
                 assert.ok type.isNodeType 'nt:base', "type.isNodeType 'nt:base' false"
             "Check for type 'nt:unstructured'": (err, nodeTypeManager) ->
                 type = nodeTypeManager.getNodeType 'nt:unstructured'
-                assert.ok type instanceof core.nodetype.NodeType, "nodeTypeManager.getNodeType('nt:unstructured') doesn't returns a valid type object"
+                assert.ok type instanceof nocr.nodetype.NodeType, "nodeTypeManager.getNodeType('nt:unstructured') doesn't returns a valid type object"
                 assert.ok type.isNodeType 'nt:unstructured', "type.isNodeType 'nt:unstructured' false"
 exports.getSuite = getSuite
 

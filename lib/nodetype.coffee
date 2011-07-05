@@ -17,7 +17,17 @@
 
 ###
 
-class NodeType
+class NodeTypeDefinition
+    constructor: ->
+        throw new Error "NodeTypeDefinition must be implemented"
+    getDeclaredChildNodeDefinitions: ->
+        throw new Error "method not implemented"
+    isAbstract: ->
+        throw new Error "method not implemented"
+
+exports.NodeTypeDefinition = NodeTypeDefinition
+
+class NodeType extends NodeTypeDefinition
     constructor: ->
         throw new Error "NodeType must be implemented"
     ###

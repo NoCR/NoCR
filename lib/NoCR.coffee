@@ -43,15 +43,15 @@ class Session
         throw new Error "Session must be implemented"
     getUserID: ->
         throw new Error "method not implemented"
-    getItem: (absPath) ->
+    getItem: (absPath, callback) ->
         throw new Error "method not implemented"
-    getRootNode: ->
+    getRootNode: (callback) ->
         throw new Error "method not implemented"
     # gets a node instance giving the absolute path as parameter
-    getNode: (absPath) ->
+    getNode: (absPath, callback) ->
         throw new Error "method not implemented"
     # gets a node instance giving its unique identifier
-    getNodeByIdentifier: (uuid) ->
+    getNodeByIdentifier: (uuid, callback) ->
         throw new Error "method not implemented"
     # gets the underlying repository instance
     getRepository: ->
@@ -73,24 +73,38 @@ exports.Session = Session
 class Value
     constructor: ->
         throw new Error "Value must be implemented"
-    getBinary: ->
-        throw new Error "method not implemented"
-    getBoolean: ->
-        throw new Error "method not implemented"
-    getDate: ->
-        throw new Error "method not implemented"
-    getDecimal: ->
-        throw new Error "method not implemented"
-    getDouble: ->
-        throw new Error "method not implemented"
-    getLong: ->
-        throw new Error "method not implemented"
+    ###
+    # Returns a String representation of the value
+    ###
     getString: ->
         throw new Error "method not implemented"
+    ###
+    # Returns a Binary representation of the value
+    ###
+    getBinary: ->
+	    throw new Error "method not implemented"
+    ###
+    # Returns a Date representation of the value
+    ###
+    getDate: ->
+        throw new Error "method not implemented"
+    ###
+    # Returns a Number representation of the value
+    ###
+    getNumber: ->
+        throw new Error "method not implemented"
+    ###
+    # returns the native js object representation
+    ###
+    getValue: ->
+        throw new Error "method not implemented"
+    ###
+    # Returns the type of this Value
+    ###
     getType: ->
         throw new Error "method not implemented"
 
-exports.value = Value
+exports.Value = Value
 
 class Repository
     # returns a session object
@@ -142,8 +156,26 @@ exports.Item = Item
 class Node extends Item
     constructor: ->
         throw new Error "Node must be implemented"
-    addNode: ->
+    
+    ###
+    #  Creates a new node of given type at relPath.
+    #  If type is not specified, repository tries to
+    #  determine node type
+    ###
+    addNode: (path, type) ->
         throw new Error "method not implemented"
+    ###
+    # Sets the single-value property of this node called name to the specified value.
+    ###
+    setProperty: (name, value, type, callback) ->
+        throw new Error "method not implemented"
+    ###
+    # Returns the property at relPath relative to this node.
+    ###
+    getProperty: (relPath, callback) ->
+        throw new Error "method not implemented"
+    
+        
     addMixin: ->
         throw new Error "method not implemented"
     getNodes: ->
@@ -154,14 +186,19 @@ class Node extends Item
         throw new Error "method not implemented"
     hasNode: ->
         throw new Error "method not implemented"
-    getNode: (callback) ->
+    getNode: (name, callback) ->
         throw new Error "method not implemented"
 exports.Node = Node
 
 class Property extends Item
     constructor: ->
         throw new Error "Property must be implemented"
-    getBinary: ->
+    getString: ->
+        throw new Error "method not implemented"
+        getValue: ->
+        throw new Error "method not implemented"
+    setValue: ->
+        throw new Error "method not implemented"
 exports.Property = Property
 
 exports.nodetype = require('./nodetype.js')

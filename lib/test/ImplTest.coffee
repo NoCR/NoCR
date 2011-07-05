@@ -34,5 +34,9 @@ exports.getRepository = ->
 exports.addNoCRBatch = (suite) ->
     suite.addBatch(repositorytest.getSuite())
     suite.addBatch(nodetypemanagertest.getSuite())
+    propertytest = require "./RootNodePropertyTest.js"
+    suite.addBatch(propertytest.getSuite())
+    createnodetest = require "./CreateNodeTest.js"
+    suite.addBatch(createnodetest.getSuite())
     suite.addBatch(nodetest.getSuite())
     suite.addBatch(datests.getSuite())
