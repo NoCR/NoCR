@@ -158,19 +158,22 @@ class Node extends Item
         throw new Error "Node must be implemented"
     
     ###
-    #  Creates a new node of given type at relPath.
-    #  If type is not specified, repository tries to
+    # Creates a new node of given type at relPath.
+    # If type is not specified, repository tries to
     #  determine node type
+    # Can accept callback func or not, as operations are performed in-memory, there is no requirement to use async
     ###
-    addNode: (path, type) ->
+    addNode: (path, type, callback) ->
         throw new Error "method not implemented"
     ###
     # Sets the single-value property of this node called name to the specified value.
+    # Can accept callback func or not, as operations are performed in-memory, there is no requirement to use async
     ###
     setProperty: (name, value, type, callback) ->
         throw new Error "method not implemented"
     ###
     # Returns the property at relPath relative to this node.
+    # Can accept callback func or not, as operations are performed in-memory, there is no requirement to use async
     ###
     getProperty: (relPath, callback) ->
         throw new Error "method not implemented"

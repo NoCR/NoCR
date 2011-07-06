@@ -38,16 +38,16 @@ exports.getSuite = ->
                 assert.ok node.getProperty("myproperty") instanceof nocr.Property, "Error at node.getProperty() instanceof Property"
             "Testing value of previously setted property": (err, node) ->
                 assert.ok node.getProperty("myproperty").getString() == "mavaleur", "Error, incorrect string value returned"
-            "Testing if getProperty throws error (with no callback)": (err, node) ->
+            "deleting property and testing if getProperty throws error (with no callback)": (err, node) ->
                 assertfunc = ()-> 
-                    node.setProperty "myproperty"
+                    node.setProperty "myproperty" # deleting property
                     node.getProperty "myproperty"
                 checkerr = (err) ->
                     assert.ok err instanceof Error
                     assert.ok err.message = "Property not found in node"
                     true
                 assert.throws assertfunc, checkerr, "Should throw an error"
-            "Testing if property callback send an error" : (err, node) ->
+            "Testing if getProperty with a callback send an error" : (err, node) ->
                 assertfunc = ()-> 
                     node.getProperty "myproperty", (err, prop)->
                         if (err != null && typeof prop == 'undefined')
@@ -57,3 +57,13 @@ exports.getSuite = ->
                     assert.ok err.message = "Property not found in node"
                     true
                 assert.throws assertfunc, checkerr, "Should throw an error"
+        '[NoCR] Testing a created property':
+            topic: ->
+                self = this
+                getSessionAsync (err,session) ->
+                    session.getRootNode (err, node) ->
+                        node.setProperty "myproperty", "mavaleur"
+                        node.getProperty "myproperty", self.callback
+            "Testing getPath result": (err, property) ->
+                assert.ok property.getPath() == '/myproperty', "Incorrect path " + property.getPath()
+                    
