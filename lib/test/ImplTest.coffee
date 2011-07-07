@@ -38,5 +38,7 @@ exports.addNoCRBatch = (suite) ->
     suite.addBatch(propertytest.getSuite())
     createnodetest = require "./CreateNodeTest.js"
     suite.addBatch(createnodetest.getSuite())
+    sessionsavetest = require "./SaveSessionTest.js"
+    suite.addBatch(sessionsavetest.getSuite())
     suite.addBatch(nodetest.getSuite())
     suite.addBatch(datests.getSuite())
