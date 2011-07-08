@@ -2,10 +2,34 @@ datests = require './DirectAccessTest.js'
 nodetest = require './NodeImplTest.js'
 nodetypemanagertest = require './NodeTypeManagerTest.js'
 repositorytest = require './RepositoryImplTest.js'
+sessionsavetest = require "./SaveSessionTest.js"
+postsavetest = require "./PostSessionSaveTest.js"
+repository = null
 
 exports.setRepository = (repo) ->
     repositorytest.setRepository(repo)
     datests.setRepository(repo)
+    repository = repo
+
+exports.getRepository = ->
+    repository
+
+    
+credentials = null
+
+getCredentials = ->
+    credentials
+exports.getCredentials = getCredentials
+
+getCredentialsAsync = (callback)->
+    callback null, credentials
+exports.getCredentialsAsync = getCredentialsAsync
+
+setCredentials = (creds) ->
+    credentials = creds
+    postsavetest.setCredentials(creds)
+
+exports.setCredentials = setCredentials
 
 sessionInstance = null
 
@@ -28,8 +52,6 @@ exports.setNode = (node) ->
 exports.getNode = ->
     nodetest.getNode()
 
-exports.getRepository = ->
-    repositorytest.getRepository()
 
 exports.addNoCRBatch = (suite) ->
     suite.addBatch(repositorytest.getSuite())
@@ -38,7 +60,7 @@ exports.addNoCRBatch = (suite) ->
     suite.addBatch(propertytest.getSuite())
     createnodetest = require "./CreateNodeTest.js"
     suite.addBatch(createnodetest.getSuite())
-    sessionsavetest = require "./SaveSessionTest.js"
     suite.addBatch(sessionsavetest.getSuite())
+    suite.addBatch(postsavetest.getSuite())
     suite.addBatch(nodetest.getSuite())
     suite.addBatch(datests.getSuite())

@@ -32,16 +32,18 @@ exports.getSuite = ->
                 self = this
                 getSessionAsync (err,session) ->
                     session.getRootNode (err, node) ->
-                        self.callback err, node
-            "Trying to set a string property without specifying type": (err, node) ->
-                node.setProperty "myproperty", "mavaleur"
-                assert.ok node.getProperty("myproperty") instanceof nocr.Property, "Error at node.getProperty() instanceof Property"
-            "Testing value of previously setted property": (err, node) ->
-                assert.ok node.getProperty("myproperty").getString() == "mavaleur", "Error, incorrect string value returned"
+                        node.setProperty "myproperty", "mavaleur"
+                        node.getProperty "myproperty", self.callback
+            "verifying setted property": (err, property) ->
+                assert.ok property instanceof nocr.Property, "Error at node.getProperty() instanceof Property"
+            "Testing value of previously setted property": (err, property) ->
+                assert.ok property.getString() == "mavaleur", "Error, incorrect string value returned"
             "deleting property and testing if getProperty throws error (with no callback)": (err, node) ->
                 assertfunc = ()-> 
                     node.setProperty "myproperty" # deleting property
-                    node.getProperty "myproperty"
+                    node.getProperty "myproperty", (err, prop) ->
+                        if err != null
+                            throw new Error err
                 checkerr = (err) ->
                     assert.ok err instanceof Error
                     assert.ok err.message = "Property not found in node"
