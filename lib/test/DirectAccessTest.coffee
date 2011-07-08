@@ -53,8 +53,10 @@ getSuite = ->
             "S.nodeExists(p(N)) returns true": (err,S) ->
                 S.nodeExists getTestedNode().getPath(), (err, res) ->
                     assert.ok res
-            "S.getNodeByIdentifier(id(N)) returns N": (err, S) ->
-                S.getNodeByIdentifier getTestedNode().getIdentifier(), (err, N) ->
+        "S.getNodeByIdentifier(id(N)) returns N":
+            topic: () ->
+                getSession().getNodeByIdentifier getTestedNode().getIdentifier(), this.callback
+            "verify node": (err, N) ->
                     assert.ok N == getTestedNode(),  "equality must be verified"
             "If N is the primary item of a node M then M.getPrimaryItem() returns N": (err, S) ->
                 assert.ok false, "Test not implemented"
