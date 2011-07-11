@@ -57,7 +57,7 @@ getSuite = ->
             topic: () ->
                 getSession().getNodeByIdentifier getTestedNode().getIdentifier(), this.callback
             "verify node": (err, N) ->
-                    assert.ok N == getTestedNode(),  "equality must be verified"
+                    assert.ok N == getTestedNode(),  "equality must be verified : " + _.inspect getTestedNode()
             "If N is the primary item of a node M then M.getPrimaryItem() returns N": (err, S) ->
                 assert.ok false, "Test not implemented"
             "If N is the root node of the workspace then S.getRootNode() returns N": (err, S) ->
