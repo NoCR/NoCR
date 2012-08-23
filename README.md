@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/NoCR/NoCR.png)](http://travis-ci.org/NoCR/NoCR)
 # NoCR - NodeJs Content Repository
 
 It describes objects and method to access data stored in a tree-based Repository.
